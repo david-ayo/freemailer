@@ -10,7 +10,7 @@ const helmet = require('helmet');
 const fs = require('fs')
 const path = require('path')
 const sendGridTransport = require('nodemailer-sendgrid-transport')
-const {SENDGRID_API} = require('./config/keys')
+// const {SENDGRID_API} = require('./config/keys')
 
 const app = express()
 
