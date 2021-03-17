@@ -25,7 +25,7 @@ app.use(compression())
 
 
 // declared origins from which the server will accept requests
-let allowedOrigins = parsed.ORIGINS.split(' ')
+//let allowedOrigins = parsed.ORIGINS.split(' ')
 
 // app.use(
 //     cors({
