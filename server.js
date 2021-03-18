@@ -57,7 +57,7 @@ app.use(compression())
 //     next();
 // });
 
-const PORT = parsed.PORT // || parsed.PORT
+const PORT = process.env.PORT // || parsed.PORT
 
 // the folder on the server to which the files are to be uploaded
 const UPLOAD_FILES_DIR = "./uploads";
@@ -85,12 +85,12 @@ const source = fs.readFileSync(filePath, 'utf-8').toString();
 const template = handlebars.compile(source);
 
 let transport = nodemailer.createTransport({
-    host: parsed.HOST, // || parsed.HOST,
-    port: parsed.MAIL_PORT,
+    host: process.env.HOST, // || parsed.HOST,
+    port: process.env.MAIL_PORT,
     protocol: 'smtp',
     auth: {
-       user: parsed.USER, // || parsed.USER,
-       pass: parsed.PASS // || parsed.PASS
+       user: process.env.USER, // || parsed.USER,
+       pass: process.env.PASS // || parsed.PASS
     }
 });
 
