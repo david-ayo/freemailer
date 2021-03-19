@@ -2,7 +2,7 @@
   "name": "match-ui",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://freedommailer.herokuapp.com/",
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "axios": "^0.21.1",
     "react": "^16.13.1",

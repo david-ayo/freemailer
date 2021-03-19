@@ -95,10 +95,11 @@ let transport = nodemailer.createTransport({
 });
 
 function sendMail (req, res, imagesLinks) {
-    const { agent, email} = req.body
+    const { agent, email, user } = req.body
     
     const replacements = {
-        agent
+        agent,
+        user
     };
     // console.log(req.body, imagesLinks)
     const htmlToSend = template(replacements);
@@ -112,17 +113,18 @@ function sendMail (req, res, imagesLinks) {
     }).then(resp => {
         res.json(Object.assign({},resp, {respCode: "00", respDescription: "The email was sent successfully"}))
         // res.status(200).send({respDescription: "The email was sent successfully"});
-    }).then(()=>(
-      imagesLinks.map(link => (
-        fs.unlink(link.content, function(err) {
-          if (err) {
-            throw err
-          } else {
-            console.log("Successfully deleted "+link.filename)
-          }
-        })
-      ))
-    ))
+    })
+    // .then(()=>(
+    //   imagesLinks.map(link => (
+    //     fs.unlink(link.content, function(err) {
+    //       if (err) {
+    //         throw err
+    //       } else {
+    //         console.log("Successfully deleted "+link.filename)
+    //       }
+    //     })
+    //   ))
+    // ))
     .catch(err => {
         console.log(err)
         res.status(300).send({respCode: "96", respDescription: "The email failed to send"});
@@ -149,7 +151,7 @@ app.post('/api/send', (req, res) => {
     
               req.files.map(function (file) {
                 imagePath = "./uploads/" + file.filename;
-                imagesLinks.push({filename:file.filename, content:imagePath});
+                imagesLinks.push({filename:file.filename, path:imagePath});
               });
             }
           }

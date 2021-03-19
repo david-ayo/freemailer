@@ -3,23 +3,33 @@ import axios from 'axios';
 
 const Message  = ()=>{
     const [agent,setName] = useState("")
+    const [user,setUser] = useState("")
     const [email,setEmail] = useState("")
     const [message,setMessage] = useState(null)
-    const [subject,setSubject] = useState("")
     const [file,setFile] = useState(null)
 
     const PostData = ()=>{
         let formData = new FormData()
+        let eachData = [ message, file ]
+        for(let i of eachData){
+            if(i){
                 formData.append(
                     'file',
-                    file,
-                    file.name
+                    i,
+                    i.name
                 )
-                formData.append(
-                    'file',
-                    message,
-                    message.name
-                )
+            }
+        }
+                // formData.append(
+                //     'file',
+                //     file,
+                //     file.name
+                // )
+                // formData.append(
+                //     'file',
+                //     message,
+                //     message.name
+                // )
                 formData.append(
                     'agent',
                     agent
@@ -28,6 +38,12 @@ const Message  = ()=>{
                     'email',
                     email
                 )
+                
+                formData.append(
+                    'user',
+                    user
+                )
+                
         axios({
             method: "POST",
             url: "api/send",
@@ -40,11 +56,11 @@ const Message  = ()=>{
                     if (response.status === 200) {
                         console.log("Success, KYC updated")
                         alert(response.respDescription)
-                        setMessage('')
+                        setMessage(null)
                         setName('')
-                        setSubject('')
+                        setUser('')
                         setEmail('')
-                        setFile('')
+                        setFile(null)
                     } else {
                         console.log("Error occurred")
                     }
@@ -68,6 +84,12 @@ const Message  = ()=>{
             placeholder="agent"
             value={agent}
             onChange={(e)=>setName(e.target.value)}
+            />
+            <input
+            type="text"
+            placeholder="user"
+            value={user}
+            onChange={(e)=>setUser(e.target.value)}
             />
             <input
             type="file"
