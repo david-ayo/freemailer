@@ -135,7 +135,6 @@ function sendMail (req, res, imagesLinks) {
 app.post('/api/send', (req, res) => {
     
     let imagePath = "abc";
-    let postId = req.params.postId;
     let imagesLinks = [];
     // console.log(req.body)
     try {
