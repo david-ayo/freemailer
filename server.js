@@ -114,17 +114,17 @@ function sendMail (req, res, imagesLinks) {
         res.json(Object.assign({},resp, {respCode: "00", respDescription: "The email was sent successfully"}))
         // res.status(200).send({respDescription: "The email was sent successfully"});
     })
-    // .then(()=>(
-    //   imagesLinks.map(link => (
-    //     fs.unlink(link.content, function(err) {
-    //       if (err) {
-    //         throw err
-    //       } else {
-    //         console.log("Successfully deleted "+link.filename)
-    //       }
-    //     })
-    //   ))
-    // ))
+    .then(()=>(
+      imagesLinks.map(link => (
+        fs.unlink(link.content, function(err) {
+          if (err) {
+            throw err
+          } else {
+            console.log("Successfully deleted "+link.filename)
+          }
+        })
+      ))
+    ))
     .catch(err => {
         console.log(err)
         res.status(300).send({respCode: "96", respDescription: "The email failed to send"});
