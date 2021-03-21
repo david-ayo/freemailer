@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+ 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>FreeMailer</title>
+    <style type="text/css">
+        table, td {
+          border:double;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to freemailer.</h1>
+    <p>This is a simple utility service, that acts as a mail server for Freedom Network (it's proprietary client)  </p>
+    <table>
+        <tr>
+            <th>Endpoint Name</th>
+            <th>URL</th>
+        </tr>
+        <tr>
+            <td>Send Mails</td>
+            <td>
+                <p>'/api/send'<br/>sample request body<br/>
+                    <code>
+                        {
+                            "agent": formData,
+                            "user": formData,
+                            "email": formData,
+                            file ...
+                        }
+                    </code>
+                    <br/>sample response body<br/>
+                    <code>
+                        code: 200
+                        {
+                            "respCode": "00", 
+                            "respDescription": "The email was sent successfully"
+                        }
+                        <br/>
+                        code: 300
+                        {
+                            "respCode": "96", 
+                            "respDescription": "The email failed to send"
+                        }
+                    </code>
+
+                </p>
+            </td>
+        </tr>
+    </table>
+ 
+ 
+</body>
+</html>

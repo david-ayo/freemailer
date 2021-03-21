@@ -163,6 +163,21 @@ app.post('/api/send', (req, res) => {
 
 })
 
+app.get('/', (req, res) => {
+  fs.readFile("./default.html", function (error, pgResp) {
+    if (error) {
+        res.writeHead(404);
+        res.write('Contents you are looking are Not Found');
+    } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(pgResp);
+    }
+     
+    res.end();
+});
+  // res.status(200).send({respCode: "00", respDescription: "Welcome to free mailer"});
+})
+
 app.listen(PORT,()=>{
     console.log("server is running on",PORT)
 })
