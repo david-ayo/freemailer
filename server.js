@@ -96,7 +96,17 @@ let transport = nodemailer.createTransport({
 
 function sendMail (req, res, imagesLinks) {
     const { agent, email, user } = req.body
-    
+    imagesLinks.push({
+      filename: 'freedom-full.png',
+        path: './emailTemp/freedom-full.png',
+        cid: 'unique@freelogo'
+    },
+    {
+      filename: 'email.png',
+        path: './emailTemp/email.png',
+        cid: 'unique@email'
+    })
+    console.log(imagesLinks)
     const replacements = {
         agent,
         user
