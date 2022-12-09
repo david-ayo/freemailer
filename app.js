@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer')
 const sendGridTransport = require('nodemailer-sendgrid-transport');
 const {SENDGRID_API} = require('./config/keys')
 
-const PORT = process.env.PORT || 5000
+const PORT = 5000//process.env.PORT || 5000
 
 app.use(express.json())
 
