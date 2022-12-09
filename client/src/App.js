@@ -4,7 +4,7 @@ import Message from './components/Message'
 class App extends Component {
   render() {
     return (
-      <div>
+      <div style={{width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
        <Message /> 
       </div>
     );
